@@ -1,0 +1,10 @@
+AllCops:
+  TargetRubyVersion: 2.4
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'  
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'lib/generators/active_topic/templates/**/*.rb'
