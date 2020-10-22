@@ -10,12 +10,12 @@ RSpec.describe ActiveTopic::Generators::SetupGenerator, type: :generator do
 
   let(:file_content) do
     <<~FILE
-    # frozen_string_literal: true
+      # frozen_string_literal: true
 
-    ActiveTopic.configure do |config|
-      config.project_id = 'Your Google Cloud project id'
-      config.credentials = 'Your Google Cloud credentials'
-    end
+      ActiveTopic.configure do |config|
+        config.project_id = 'Your Google Cloud project id'
+        config.credentials = 'Your Google Cloud credentials'
+      end
     FILE
   end
 

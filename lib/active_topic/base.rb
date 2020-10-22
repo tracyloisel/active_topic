@@ -26,7 +26,7 @@ module ActiveTopic
     protected
 
     def topic_name
-      @topic_name ||= self.class.to_s.underscore[0..-7]
+      @topic_name ||= self.class.to_s.sub(/Topic\z/, '').underscore
     end
 
     def topic

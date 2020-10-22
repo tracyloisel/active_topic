@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Sacha Arroche']
   spec.email         = ['arroche.sacha@gmail.com']
 
-  spec.summary       = 'Non'
-  spec.description   = 'Non plus'
+  spec.summary       = 'Create your own topics to publish messages on Google Cloud Pub/Sub!'
+  spec.description   = 'Simplify the publication of messages on Google Cloud Pub/Sub Topics.'
   spec.homepage      = 'https://shopmium.com'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.4.0')
@@ -17,8 +17,8 @@ Gem::Specification.new do |spec|
   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/shopmium/active_topic"
-  spec.metadata["changelog_uri"] = "https://github.com/shopmium/active_topic/blob/master/CHANGELOG.md"
+  spec.metadata['source_code_uri'] = 'https://github.com/shopmium/active_topic'
+  spec.metadata['changelog_uri'] = 'https://github.com/shopmium/active_topic/blob/master/CHANGELOG.md'
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
