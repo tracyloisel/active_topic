@@ -218,9 +218,9 @@ For your tests, we recommend you to use the [Google Cloud Pub/Sub emulator](http
 
 ## About Shopmium
 
-[Shopmium](https://www.shopmium.com) is a free application that enables you to access exclusive offers on everyday brands found in the supermarket. As a user, you simply buy the featured product from your nearest store, take a picture of your receipt and get up to 100% cashback paid directly into your PayPal or bank account!
+[Shopmium](https://www.shopmium.com) is a free application that enables you to access exclusive offers on everyday brands found in supermarkets. As a user, you simply buy the featured product at the nearest store, take a picture of your receipt and get up to 100% cashback paid directly into your PayPal or bank account!
 
-Offers in the app change weekly as we work with over 500 of the biggest supermarket product manufacturers, such as Danone, Nestlé, SC Johnson, Heineken, McCain, Pepsico and many more; who are featuring different products and providing Shopmium users with an exclusive offer to buy that product. More than 5 million people in the UK, France and Belgium are already experiencing Shopmium. When will you try it? 😉
+Offers in the app changes weekly as we work with over 500 of the biggest supermarkets products manufacturers, such as Danone, Nestlé, SC Johnson, Heineken, McCain, Pepsico and much more. These products manufacturers are featuring different products and are providing Shopmium users with exclusive offers to buy these products. More than 5 million people in the UK, France and Belgium are already experiencing Shopmium.
 
 Shopmium started in France in 2011, and today, across Paris and London, we are a team of 70 and proud to say that we’ve already won many awards for our app.
 
