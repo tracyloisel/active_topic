@@ -74,6 +74,29 @@ RSpec.describe ActiveTopic::Base do
       end
     end
 
+    describe '#async_publisher' do
+      context 'when the topic exists' do
+        before(:each) do
+          allow_any_instance_of(Google::Cloud::PubSub::Project).to receive(:topic)
+            .and_return(Google::Cloud::PubSub::Topic.new)
+        end
+
+        it 'calls async_publisher on a Google::Cloud::PubSub::Topic object' do
+          expect_any_instance_of(Google::Cloud::PubSub::Topic).to receive(:async_publisher)
+
+          subject.async_publisher
+        end
+      end
+
+      context 'when the topic does not exist' do
+        before(:each) { allow_any_instance_of(Google::Cloud::PubSub::Project).to receive(:topic).and_return(nil) }
+
+        it 'raises an ActiveTopic::Exceptions::TopicNotFound exception' do
+          expect { subject.async_publisher }.to raise_exception(ActiveTopic::Exceptions::TopicNotFound)
+        end
+      end
+    end
+
     describe '#subscribe' do
       context 'when the topic exists' do
         before(:each) do

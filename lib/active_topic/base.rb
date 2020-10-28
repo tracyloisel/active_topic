@@ -9,7 +9,7 @@ module ActiveTopic
   class Base
     extend ClassMethods
 
-    delegate :publish, :publish_async, :subscribe, to: :topic
+    delegate :publish, :publish_async, :async_publisher, :subscribe, to: :topic
 
     def initialize
       if instance_of?(ActiveTopic::Base)
