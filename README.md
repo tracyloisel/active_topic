@@ -197,7 +197,7 @@ To manage the messages that are published asynchronously, you can use the `async
 active_topic.async_publisher.stop! # Stops the messages asynchronous publishing
 ```
 
-More information on the AsyncPublisher class on GoogleApis Documentation: https://googleapis.dev/ruby/google-cloud-pubsub/latest/Google/Cloud/PubSub/Topic.html#async_publisher-instance_method.
+More information on the AsyncPublisher class on [GoogleApis Documentation](https://googleapis.dev/ruby/google-cloud-pubsub/latest/Google/Cloud/PubSub/Topic.html#async_publisher-instance_method).
 
 
 ## Development
