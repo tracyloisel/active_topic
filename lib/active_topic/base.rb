@@ -12,7 +12,7 @@ module ActiveTopic
     delegate :publish, :publish_async, :subscribe, to: :topic
 
     def initialize
-      if self.class == ActiveTopic::Base
+      if instance_of?(ActiveTopic::Base)
         raise ActiveTopic::Exceptions::CantBeIniatilized, 'ActiveTopic::Base cannot be initialized'
       end
 

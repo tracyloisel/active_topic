@@ -7,7 +7,7 @@ module ActiveTopic
     class CantBeIniatilized < Base; end
 
     class TopicAlreadyExists < Base; end
-    
+
     class TopicNotFound < Base; end
   end
 end
