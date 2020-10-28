@@ -1,6 +1,7 @@
 # ActiveTopic
 
 ActiveTopic is a gem developed for Ruby on Rails that will allow you to simply add Google Cloud Topics to your Ruby on Rails application.
+It is a wrapper of the [google-cloud-pubsub](https://github.com/googleapis/google-cloud-ruby/tree/master/google-cloud-pubsub) gem.
 
 ## Information
 
@@ -95,7 +96,7 @@ class MyFirstOneTopic < ActiveTopic::Base
 end
 ```
 
-### Use the ActiveTopic classes
+### Using ActiveTopic
 
 The classes that inherits with ActiveTopic::Base are provided with a bunch of methods.
 
@@ -117,24 +118,86 @@ The name of the created topic will be the name of the class in snake_case withou
 This method will return true if the topic is created with success.
 If you try the create a topic that already exists, this method will raise an ```ActiveTopic::Exceptions:TopicAlreadyExists``` exception.
 
+### Using the classes inheriting from ActiveTopic::Base
 
-To create a new subscription:
+To use ActiveTopic you need to use an instance of a class that inherits from ActiveTopic::Base.
 
-```ruby
-subscribe subscription_name
-```
-
-To publish a message on the topic:
+example:
 
 ```ruby
-publish
+active_topic = MyFirstOneTopic.new
 ```
 
-To asynchronously publish a message on the topic:
+#### Creating a new subscription:
+
+You can use the method subscribe to create a subscription to the topic of your class:
 
 ```ruby
-publish_async
+active_topic.subscribe 'subscription_name'
 ```
+
+You can also provide the number of seconds to wait for the aknowledgement of the messages and also the URL endpoint to push messages to:
+
+```ruby
+active_topic.subscribe 'subscription_name', deadline: 60, endpoint: 'https://example.com/endpoint'
+```
+
+#### Publishing a message on the topic:
+
+You can publish a message to the topic of your class with the method `publish`:
+
+```ruby
+active_topic.publish 'message'
+```
+
+You can also publish a message with attributes:
+
+```ruby
+active_topic.publish 'message', attr: 4, hello: :ok
+```
+
+It is possible to send multiple messages at the same in a batch by passing a block to `publish`:
+
+```ruby
+active_topic.publish do |batch|
+  batch.publish 'message 1', attr: :ok
+  batch.publish 'message 2', attr: :okok
+end
+```
+
+#### Publishing a message asynchronously to the topic:
+
+You can publish a message asynchronously to the topic of your class with method `publish_async`:
+
+```ruby
+active_topic.publish_async 'message'
+```
+
+You can publish a message asynchronously with attributes:
+
+```ruby
+active_topic.publish_async 'message', attr: 4, hello: :ok
+```
+
+You can also have a callback by passing a block to publish_async:
+
+```ruby
+active_topic.publish_async 'message' do |result|
+  if result.succeeded?
+    log_publish_success result.data
+  else
+    log_publish_failure result.data, result.error
+  end
+end
+```
+
+To manage the messages that are published asynchronously, you can use the `async_publisher` method:
+
+```ruby
+active_topic.async_publisher.stop! # Stops the messages asynchronous publishing
+```
+
+More information on the AsyncPublisher class on GoogleApis Documentation: https://googleapis.dev/ruby/google-cloud-pubsub/latest/Google/Cloud/PubSub/Topic.html#async_publisher-instance_method.
 
 
 ## Development
@@ -147,7 +210,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/shopmium/active_topic.
 
-Please add the pre-commit to your folder and follow the rubocop linter indications and follow the .rubocop.yml configuration.
+We use [rubocop](https://github.com/rubocop-hq/rubocop) for the linting. Please take into account the linting rules that are available in the .rubocop.yml file.
 
 ### Testing
 
@@ -155,7 +218,13 @@ For your tests, we recommend you to use the [Google Cloud Pub/Sub emulator](http
 
 ## About Shopmium
 
-[Shopmium](https://www.shopmium.com) has been founded in 2010 by ...
+[Shopmium](https://www.shopmium.com) is a free application that enables you to access exclusive offers on everyday brands found in the supermarket. As a user, you simply buy the featured product from your nearest store, take a picture of your receipt and get up to 100% cashback paid directly into your PayPal or bank account!
+
+Offers in the app change weekly as we work with over 500 of the biggest supermarket product manufacturers, such as Danone, Nestlé, SC Johnson, Heineken, McCain, Pepsico and many more; who are featuring different products and providing Shopmium users with an exclusive offer to buy that product. More than 5 million people in the UK, France and Belgium are already experiencing Shopmium. When will you try it? 😉
+
+Shopmium started in France in 2011, and today, across Paris and London, we are a team of 70 and proud to say that we’ve already won many awards for our app.
+
+In 2015, Shopmium joined Quotient Technology Inc. a US based organisation that owns Coupons.com.
 
 ## License
 
